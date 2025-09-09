@@ -4,9 +4,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -22,9 +22,9 @@ public class FormRepoOrder {
     private Boolean isBuy;
     @NotNull
     private Integer orderType;
-    @NotNull
+    @NotBlank
     private String account;
-    @NotNull
+    @NotBlank
     private String isin;
     @NotNull
     private Long quantity;
@@ -32,24 +32,24 @@ public class FormRepoOrder {
     private Double price;
     @NotNull
     private Double pricePart2;
-    @NotNull
+    @NotBlank
     private String contractSum;
-    @NotNull
+    @NotBlank
     private String contractSumPart2;
     private Integer clientID;
     private String clientName;
     private String clientEDRPOU;
     private String clientINN;
     private String clientEDRISI;
-    @NotNull
+    @NotBlank
     private String clientCode;
     private String contractNum;
     private String contractText;
     private String contractNumPart2;
     private String contractTextPart2;
-    @NotNull
+    @NotBlank
     private String termDate;
-    @NotNull
+    @NotBlank
     private String termDatePart2;
     @NotNull
     private Double repoRate;
@@ -67,7 +67,7 @@ public class FormRepoOrder {
     private String toBrokerEdrpou;
     @NotNull
     private Boolean isCCP;
-    @NotNull
+    @NotBlank
     private String tradeCurrency;
     //@NotNull
     private String applicationContext;
@@ -79,9 +79,9 @@ public class FormRepoOrder {
     private XMLGregorianCalendar isRejected;
     private String description;
     // -------------------------
-    @NotNull
+    @NotBlank
     private String account2;
-    @NotNull
+    @NotBlank
     private String clientCode2;
     private Integer clientID2;
     private String contractNum2;

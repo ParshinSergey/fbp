@@ -148,6 +148,7 @@ public class UtilForm {
         // crossApplicationContext;
         order.setTradeCurrency(form.getTradeCurrency());
         order.setApplicationContextUnique(form.getApplicationContextUnique());
+        order.setContractSum(new BigDecimal(form.getContractSum()));
 
         return order;
 
@@ -195,8 +196,10 @@ public class UtilForm {
         order.setToBrokerEdrpou(form.getToBrokerEdrpou());
         order.setIsCCP(form.getIsCCP());
         order.setTradeCurrency(form.getTradeCurrency());
-        order.setApplicationContext(UUID.randomUUID().toString());
-        order.setApplicationContextUnique(UUID.randomUUID().toString());
+        //order.setApplicationContext(UUID.randomUUID().toString());
+        order.setApplicationContext(form.getApplicationContext());
+        order.setApplicationContextUnique(form.getApplicationContextUnique());
+        //order.setApplicationContextUnique(UUID.randomUUID().toString());
         // isComplete;
         // isRemoval;
         // isRejected;

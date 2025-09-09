@@ -5,6 +5,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @XmlRootElement(name = "AddressOrder", namespace = "")
@@ -71,7 +73,8 @@ import lombok.Setter;
         "agreements2",
         "crossApplicationContext",
         "tradeCurrency",
-        "applicationContextUnique"
+        "applicationContextUnique",
+        "contractSum"
 })
 public class AddressOrder {
 
@@ -207,5 +210,7 @@ public class AddressOrder {
     protected String tradeCurrency;
     @XmlElement(name = "ApplicationContextUnique")
     protected String applicationContextUnique;
+    @XmlElement(name = "ContractSum")
+    protected BigDecimal contractSum;
 
 }

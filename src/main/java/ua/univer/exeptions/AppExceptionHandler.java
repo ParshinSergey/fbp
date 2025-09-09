@@ -7,6 +7,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.net.SocketTimeoutException;
 import java.time.format.DateTimeParseException;
 
 @ControllerAdvice
@@ -43,5 +44,14 @@ public class AppExceptionHandler {
         log.warn(answer);
         return ResponseEntity.unprocessableEntity().body(answer);
     }
+
+    @ExceptionHandler(SocketTimeoutException.class)
+    public ResponseEntity<String> handleSocketTimeout (SocketTimeoutException ex) {
+        String answer = String.format(TEXT_MISTAKE, ex.getMessage());
+        log.warn(answer);
+        return ResponseEntity.internalServerError().body(answer);
+    }
+
+
 
 }

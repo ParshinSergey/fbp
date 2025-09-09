@@ -20,6 +20,7 @@ import ua.univer.util.ConverterUtil;
 
 import java.net.http.HttpClient;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 
@@ -128,7 +129,7 @@ public class LoginController extends BaseController{
         String result;
         switch (response){
             case 1:
-                result = "Авторизация выполнена";
+                result = "Авторизация выполнена " + LocalDateTime.now().toLocalTime();
                 break;
             case 0:
                 result = "Ошибки с шифрованием или подписью";

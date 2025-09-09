@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -12,13 +13,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @NoArgsConstructor
 public class FormOrder {
 
-    @NotNull
     private Integer applicationID;
     private Integer crossApplicationID;
     private Integer mainAppID;
     private String brokerID;
     private String armID;
+    @NotBlank
     private Integer orderTypeID;
+    @NotBlank
     private Boolean isAddressToBroker;
     private String toBrokerID;
     private String toBrokerEdrpou;
@@ -26,12 +28,16 @@ public class FormOrder {
     private Integer listingID;
     private Integer paperTypeID;
     private String ticker;
+    @NotBlank
     private String isin;
     private Integer listingTypeID;
     private String currencyCode;
+    @NotBlank
     private Boolean isBuy;
+    @NotBlank
     private Double price;
     private Double nomPercent;
+    @NotBlank
     private Integer quantity;
     private Double completePrice;
     private Integer completeQuantity;
@@ -47,11 +53,13 @@ public class FormOrder {
     private String clcode;
     private String payBank;
     private String payEdrpou;
+    @NotBlank
     private String payAccount;
     private String payAccountPaper;
     private Integer clientType;
     private Integer clientID;
     private String clientName;
+    @NotBlank
     private String clientEdrpou;
     private Boolean isLawerClient;
     private Boolean isNerez;
@@ -61,12 +69,13 @@ public class FormOrder {
     private Boolean isEmitBackPay;
     private String agreements;
     private String contractNum;
+    @NotBlank
     private Boolean isCCP;
     private XMLGregorianCalendar isComplete;
     private XMLGregorianCalendar isRemoval;
     private XMLGregorianCalendar isRejected;
     private String discription;
-    @NotNull
+    @NotBlank
     private String applicationContext;
     private String payAccountPaper2;
     private String clientEdrpou2;
@@ -76,4 +85,5 @@ public class FormOrder {
     private String crossApplicationContext;
     private String tradeCurrency;
     private String applicationContextUnique;
+    private String contractSum;
 }
