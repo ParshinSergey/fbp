@@ -18,9 +18,9 @@ public class FormOrder {
     private Integer mainAppID;
     private String brokerID;
     private String armID;
-    @NotBlank
+    @NotNull
     private Integer orderTypeID;
-    @NotBlank
+    @NotNull
     private Boolean isAddressToBroker;
     private String toBrokerID;
     private String toBrokerEdrpou;
@@ -32,12 +32,12 @@ public class FormOrder {
     private String isin;
     private Integer listingTypeID;
     private String currencyCode;
-    @NotBlank
+    @NotNull
     private Boolean isBuy;
-    @NotBlank
+    @NotNull
     private Double price;
     private Double nomPercent;
-    @NotBlank
+    @NotNull
     private Integer quantity;
     private Double completePrice;
     private Integer completeQuantity;
@@ -69,7 +69,7 @@ public class FormOrder {
     private Boolean isEmitBackPay;
     private String agreements;
     private String contractNum;
-    @NotBlank
+    @NotNull
     private Boolean isCCP;
     private XMLGregorianCalendar isComplete;
     private XMLGregorianCalendar isRemoval;

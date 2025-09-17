@@ -52,6 +52,13 @@ public class AppExceptionHandler {
         return ResponseEntity.internalServerError().body(answer);
     }
 
+    @ExceptionHandler(DeclareException.class)
+    public ResponseEntity<String> handleDeclareException (DeclareException ex){
+        String answer = String.format(TEXT_MISTAKE, ex.getMessage());
+        log.warn(answer);
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(answer);
+    }
+
 
 
 }

@@ -63,17 +63,17 @@ public class UtilForm {
         String district = form.getAddrDISTRICT();
         String street = form.getAddrSTREET();
 
-        if (district.matches("(.*)" + PHRASE1 + "(.*)")) {
+        if (district.matches("([\\s\\S]*)" + PHRASE1 + "([\\s\\S]*)")) {
             String[] arrAddress = form.getAddrDISTRICT().split(PHRASE1, 2);
             district = arrAddress[0].trim();
             street = arrAddress.length > 1 ? PHRASE1 + " " + arrAddress[1].trim() : null;
         }
-        else if (district.matches("(.*)" + PHRASE2 + "(.*)")){
+        else if (district.matches("([\\s\\S]*)" + PHRASE2 + "([\\s\\S]*)")){
             String[] arrAddress = form.getAddrDISTRICT().split(PHRASE2, 2);
             district = arrAddress[0].trim();
             street = arrAddress.length > 1 ? PHRASE2 + " " + arrAddress[1].trim() : null;
         }
-        else if (district.matches("(.*)" + PHRASE3 + "(.*)")){
+        else if (district.matches("([\\s\\S]*)" + PHRASE3 + "([\\s\\S]*)")){
             String[] arrAddress = form.getAddrDISTRICT().split(PHRASE3, 2);
             district = arrAddress[0].trim();
             street = arrAddress.length > 1 ? PHRASE3 + " " + arrAddress[1].trim() : null;

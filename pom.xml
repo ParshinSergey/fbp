@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>perspective</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.4</version>
 	<name>perspective</name>
 	<description>Web Client for Perspective</description>
 

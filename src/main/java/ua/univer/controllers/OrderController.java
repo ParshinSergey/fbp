@@ -12,6 +12,7 @@ import ua.univer.BIT.cDevice;
 import ua.univer.dto.FormOrder;
 import ua.univer.dto.FormRepoOrder;
 import ua.univer.dto.UtilForm;
+import ua.univer.exeptions.DeclareException;
 import ua.univer.exeptions.MyException;
 import ua.univer.fbpgateclient.AddressOrder;
 import ua.univer.fbpgateclient.DocumentElement;
@@ -127,6 +128,11 @@ public class OrderController extends BaseController{
         if (de.getRepoOrders() == null) throw new MyException("Список RepoOrders пуст");
         RepoOrder result = de.getRepoOrders().get(0);
 
+        if (result.getIsRejected() != null){
+            String message = result.getDescription();
+            throw new DeclareException("Знехтувано Біржею: " + message);
+        }
+
         return ResponseEntity.ok().body(ConverterUtil.objectToJson(result));
     }
 
@@ -154,6 +160,11 @@ public class OrderController extends BaseController{
         DocumentElement de = ConverterUtil.xmlToObject(responseStr, DocumentElement.class);
         if (de.getRepoOrders() == null) throw new MyException("Список RepoOrders пуст");
         RepoOrder result = de.getRepoOrders().get(0);
+
+        if (result.getIsRejected() != null){
+            String message = result.getDescription();
+            throw new DeclareException("Знехтувано Біржею: " + message);
+        }
 
         return ResponseEntity.ok().body(ConverterUtil.objectToJson(result));
     }
