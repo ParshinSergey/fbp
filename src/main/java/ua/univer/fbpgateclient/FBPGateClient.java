@@ -58,8 +58,8 @@ public class FBPGateClient {
             // Список сертификатов устройства
             ArrayList<Certificate> certificates = tokenLib.GetCertificateList(dev.UsbSlot, avPath, err);
 
-            // Первый сертификат из списка
-            Certificate cer = certificates.get(1);
+            // Последний сертификат из списка
+            Certificate cer = certificates.get(certificates.size()-1);
 
             String pin = "12345678";
 

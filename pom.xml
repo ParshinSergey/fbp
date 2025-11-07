@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>perspective</artifactId>
-	<version>1.0.4</version>
-	<name>perspective</name>
+	<artifactId>fbp</artifactId>
+	<version>1.0.5</version>
+	<name>fbp</name>
 	<description>Web Client for Perspective</description>
 
 	<properties>
