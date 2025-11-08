@@ -31,12 +31,12 @@ import static ua.univer.util.FileUtil.writeStringToFile;
 public class AccountController extends BaseController{
 
 
-    public AccountController(HttpClient httpClient, IFBPGateService gateTest, IFBPGateProd gateProd, CertGenerator genRSA, cDevice dev, KeyStore keyStore) {
-        super(httpClient, gateTest, gateProd, genRSA, dev, keyStore);
+    public AccountController(HttpClient httpClient, IFBPGateProd gateProd, CertGenerator genRSA, cDevice dev, KeyStore keyStore) {
+        super(httpClient, gateProd, genRSA, dev, keyStore);
     }
 
 
-
+/*
     @PostMapping(value = "/v1/createClient")
     public ResponseEntity<String> createClientTest2(@RequestBody @Valid FormNewClient form) {
 
@@ -90,7 +90,7 @@ public class AccountController extends BaseController{
         if (result.getError() != null) throw new UnprocessableEntityException(result.getError());
 
         return ResponseEntity.ok().body(ConverterUtil.objectToJson(result));
-    }
+    }*/
 
 
     @PostMapping(value = "/prod/createClient")

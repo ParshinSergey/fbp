@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>fbp</artifactId>
-	<version>1.0.5</version>
+	<version>3.0.0</version>
 	<name>fbp</name>
 	<description>Web Client for Perspective</description>
 

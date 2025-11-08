@@ -31,9 +31,10 @@ import static ua.univer.util.FileUtil.writeStringToFile;
 public class LoginController extends BaseController{
 
 
-    public LoginController(HttpClient httpClient, IFBPGateService gateTest, IFBPGateProd gateProd, CertGenerator genRSA, cDevice dev, KeyStore keyStore) {
-        super(httpClient, gateTest, gateProd, genRSA, dev, keyStore);
+    public LoginController(HttpClient httpClient, IFBPGateProd gateProd, CertGenerator genRSA, cDevice dev, KeyStore keyStore) {
+        super(httpClient, gateProd, genRSA, dev, keyStore);
     }
+/*
 
 
     @Scheduled(fixedRate = 365*24*60*60, initialDelay = 5, timeUnit = TimeUnit.SECONDS)
@@ -75,6 +76,7 @@ public class LoginController extends BaseController{
 
         return ResponseEntity.ok().body(ConverterUtil.objectToJson(de));
     }
+*/
 
 
     @Scheduled(fixedRate = 365*24*60*60, initialDelay = 5, timeUnit = TimeUnit.SECONDS)

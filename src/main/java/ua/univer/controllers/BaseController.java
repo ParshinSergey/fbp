@@ -42,7 +42,7 @@ public class BaseController {
     Logger logger = LoggerFactory.getLogger(BaseController.class);
 
     protected final HttpClient httpClient;
-    protected final IFBPGateService gateTest;
+    //protected final IFBPGateService gateTest;
     protected final IFBPGateProd gateProd;
     protected final CertGenerator genRSA;
     protected final cDevice dev;
@@ -54,9 +54,9 @@ public class BaseController {
     protected String pin = "12345678";
 
 
-    public BaseController(HttpClient httpClient, IFBPGateService gateTest, IFBPGateProd gateProd, CertGenerator genRSA, cDevice dev, KeyStore keyStore) {
+    public BaseController(HttpClient httpClient, IFBPGateProd gateProd, CertGenerator genRSA, cDevice dev, KeyStore keyStore) {
         this.httpClient = httpClient;
-        this.gateTest = gateTest;
+        //this.gateTest = gateTest;
         this.gateProd = gateProd;
         this.genRSA = genRSA;
         this.dev = dev;

@@ -31,10 +31,11 @@ import static ua.univer.util.FileUtil.writeStringToFile;
 public class OrderController extends BaseController{
 
 
-    public OrderController(HttpClient httpClient, IFBPGateService gateTest, IFBPGateProd gateProd, CertGenerator genRSA, cDevice dev, KeyStore keyStore) {
-        super(httpClient, gateTest, gateProd, genRSA, dev, keyStore);
+    public OrderController(HttpClient httpClient, IFBPGateProd gateProd, CertGenerator genRSA, cDevice dev, KeyStore keyStore) {
+        super(httpClient, gateProd, genRSA, dev, keyStore);
     }
 
+/*
 
     @GetMapping(value = "/v1/getAddressOrders", consumes = MediaType.ALL_VALUE)
     public ResponseEntity<String> getAddressOrders() {
@@ -76,6 +77,7 @@ public class OrderController extends BaseController{
 
         return ResponseEntity.ok().body(ConverterUtil.objectToJson(result));
     }
+*/
 
 /*
 
@@ -104,6 +106,7 @@ public class OrderController extends BaseController{
         return ResponseEntity.ok().body(ConverterUtil.objectToJson(result));
     }
 */
+/*
 
     @PostMapping(value = "/v1/newRepoOrder")
     public ResponseEntity<String> newRepoOrder (@RequestBody @Valid FormRepoOrder form){
@@ -136,6 +139,7 @@ public class OrderController extends BaseController{
         return ResponseEntity.ok().body(ConverterUtil.objectToJson(result));
     }
 
+*/
 
 
     @PostMapping(value = "/prod/newRepoOrder")

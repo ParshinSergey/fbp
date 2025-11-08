@@ -42,6 +42,7 @@ public class AppConfiguration {
 
     public final static String DIRECTORY = "INBOX_OUTBOX";
 
+/*
 
     @Bean(name="gateTest")
     public IFBPGateService getGateTest() {
@@ -55,6 +56,7 @@ public class AppConfiguration {
         return gate;
     }
 
+*/
 
     @Bean(name="gateProd")
     public IFBPGateProd getGateProd() {
