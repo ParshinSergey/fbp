@@ -30,9 +30,10 @@ import static ua.univer.util.FileUtil.writeStringToFile;
 @RequestMapping(value = "/api/order", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class OrderController extends BaseController{
 
+    final static String HOST_NAME = "${host_name}";
 
-    public OrderController(HttpClient httpClient, IFBPGateProd gateProd, CertGenerator genRSA, cDevice dev, KeyStore keyStore) {
-        super(httpClient, gateProd, genRSA, dev, keyStore);
+    public OrderController(HttpClient httpClient, IFBPGateService gate, CertGenerator genRSA, cDevice dev, KeyStore keyStore) {
+        super(httpClient, gate, genRSA, dev, keyStore);
     }
 
 /*
@@ -106,46 +107,12 @@ public class OrderController extends BaseController{
         return ResponseEntity.ok().body(ConverterUtil.objectToJson(result));
     }
 */
-/*
-
-    @PostMapping(value = "/v1/newRepoOrder")
-    public ResponseEntity<String> newRepoOrder (@RequestBody @Valid FormRepoOrder form){
-
-        logger.info("Method NewRepoOrder. TEST.");
-        DocumentElement document = new DocumentElement();
-        RepoOrder order = UtilForm.convertFormToRepoOrder(form);
-        document.repoOrders.add(order);
-
-        String xmlString = ConverterUtil.objectToXML(document);
-        writeStringToFile(xmlString, "NewRepoOrder", ".xml");
-
-        byte[] signedXml = tokenLib.SignData(dev.getCertificate(), dev.UsbSlot, pin, xmlString.getBytes(StandardCharsets.UTF_8), true, avPath, err);
-        byte[] crypt = BIT_PKCS11CL3.Encrypt(signedXml, KeyStore.sessionKey, err);
-        byte[] response = gateTest.sendXMLResponse(cDevice.armID, crypt, ExchData.NewRepoOrder, false);
-        byte[] decryptedResponse = BIT_PKCS11CL3.Decrypt(response, KeyStore.sessionKey, err);
-
-        if(decryptedResponse == null) throw new MyException("Response is null");
-        String responseStr = new String(decryptedResponse, StandardCharsets.UTF_8);
-        writeStringToFile( responseStr, "Response", ".xml");
-        DocumentElement de = ConverterUtil.xmlToObject(responseStr, DocumentElement.class);
-        if (de.getRepoOrders() == null) throw new MyException("Список RepoOrders пуст");
-        RepoOrder result = de.getRepoOrders().get(0);
-
-        if (result.getIsRejected() != null){
-            String message = result.getDescription();
-            throw new DeclareException("Знехтувано Біржею: " + message);
-        }
-
-        return ResponseEntity.ok().body(ConverterUtil.objectToJson(result));
-    }
-
-*/
 
 
-    @PostMapping(value = "/prod/newRepoOrder")
-    public ResponseEntity<String> newRepoOrderProd (@RequestBody @Valid FormRepoOrder form){
+    @PostMapping(value = "/" + HOST_NAME + "/newRepoOrder")
+    public ResponseEntity<String> repoOrder (@RequestBody @Valid FormRepoOrder form){
 
-        logger.info("Method NewRepoOrder. Production.");
+        logger.info("Method RepoOrder.");
         DocumentElement document = new DocumentElement();
         RepoOrder order = UtilForm.convertFormToRepoOrder(form);
         document.repoOrders.add(order);
@@ -155,7 +122,7 @@ public class OrderController extends BaseController{
 
         byte[] signedXml = tokenLib.SignData(dev.getCertificate(), dev.UsbSlot, pin, xmlString.getBytes(StandardCharsets.UTF_8), true, avPath, err);
         byte[] crypt = BIT_PKCS11CL3.Encrypt(signedXml, KeyStore.sessionKeyProd, err);
-        byte[] response = gateProd.sendXMLResponse(cDevice.armID, crypt, ExchData.NewRepoOrder, false);
+        byte[] response = gate.sendXMLResponse(cDevice.armID, crypt, ExchData.NewRepoOrder, false);
         byte[] decryptedResponse = BIT_PKCS11CL3.Decrypt(response, KeyStore.sessionKeyProd, err);
 
         if(decryptedResponse == null) throw new MyException("Response is null");

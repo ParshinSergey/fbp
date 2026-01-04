@@ -6,12 +6,12 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.tempuri.IFBPGateProd;
 import org.tempuri.IFBPGateService;
 import ua.univer.BIT.BIT_PKCS11CL3;
 import ua.univer.BIT.CertGenerator;
 import ua.univer.BIT.KeyStore;
 import ua.univer.BIT.cDevice;
+import ua.univer.config.ConfigProperties;
 import ua.univer.exeptions.MyException;
 import ua.univer.fbpgateclient.DocumentElement;
 import ua.univer.fbpgateclient.ExchData;
@@ -30,9 +30,11 @@ import static ua.univer.util.FileUtil.writeStringToFile;
 @RequestMapping(value = "/api")
 public class LoginController extends BaseController{
 
+    final static String HOST_NAME = "${host_name}";
 
-    public LoginController(HttpClient httpClient, IFBPGateProd gateProd, CertGenerator genRSA, cDevice dev, KeyStore keyStore) {
-        super(httpClient, gateProd, genRSA, dev, keyStore);
+
+    public LoginController(HttpClient httpClient, IFBPGateService gate, CertGenerator genRSA, cDevice dev, KeyStore keyStore) {
+        super(httpClient, gate, genRSA, dev, keyStore);
     }
 /*
 
@@ -62,36 +64,22 @@ public class LoginController extends BaseController{
         return ResponseEntity.ok().body(responseStr);
     }
 
-
-    @GetMapping(value = "/v1/getPortfolio", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> getPortfolio() {
-
-        logger.info("Method GetPortfolio. TEST.");
-        byte[] response = gateTest.getCryptXML(cDevice.armID, ExchData.Portfolio, false);
-        byte[] decryptedResponse = BIT_PKCS11CL3.Decrypt(response, KeyStore.sessionKey, err);
-        if(decryptedResponse == null) throw new MyException("Response is null");
-        String responseStr = new String(decryptedResponse, StandardCharsets.UTF_8);
-        writeStringToFile(responseStr, "Response", ".xml");
-        DocumentElement de = ConverterUtil.xmlToObject(responseStr, DocumentElement.class);
-
-        return ResponseEntity.ok().body(ConverterUtil.objectToJson(de));
-    }
 */
 
 
     @Scheduled(fixedRate = 365*24*60*60, initialDelay = 5, timeUnit = TimeUnit.SECONDS)
     @Scheduled(cron="0 0 10 * * MON-FRI")
-    @GetMapping(value = "/prod/login", produces = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<String> loginProd() {
+    @GetMapping(value = "/"  + HOST_NAME + "/login", produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<String> login() {
 
-        logger.info("Method Login");
+        logger.info("Method Login. {}", ConfigProperties.SERVER_HOST_NAME);
 
         String strLoginData = loginXML(cDevice.armID, Base64.getEncoder().encodeToString(dev.getCertificate().getEncoded()),
                 KeyStore.login, KeyStore.password, Base64.getEncoder().encodeToString(CertGenerator.RSACert));
 
         byte[] signedLogin = tokenLib.SignData(dev.getCertificate(), dev.UsbSlot, pin, strLoginData.getBytes(), true, avPath, err);
 
-        String responseStr = gateProd.login(cDevice.armID, signedLogin);
+        String responseStr = gate.login(cDevice.armID, signedLogin);
         writeStringToFile(responseStr, "Response", ".xml");
         LoginData loginData = ConverterUtil.xmlToObject(responseStr, LoginData.class);
         if (loginData.login == null || loginData.login.isEmpty() || loginData.login.get(0).IsLoginOk == null || !loginData.login.get(0).IsLoginOk.equalsIgnoreCase("True")) {
@@ -103,11 +91,11 @@ public class LoginController extends BaseController{
     }
 
 
-    @GetMapping(value = "/prod/getPortfolio", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> getPortfolioProd() {
+    @GetMapping(value = "/" + HOST_NAME + "/getPortfolio", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> getPortfolio() {
 
-        logger.info("Method GetPortfolio");
-        byte[] response = gateProd.getCryptXML(cDevice.armID, ExchData.Portfolio, false);
+        logger.info("Method GetPortfolio. {}", ConfigProperties.SERVER_HOST_NAME);
+        byte[] response = gate.getCryptXML(cDevice.armID, ExchData.Portfolio, false);
         byte[] decryptedResponse = BIT_PKCS11CL3.Decrypt(response, KeyStore.sessionKeyProd, err);
         if(decryptedResponse == null) throw new MyException("Response is null");
         String responseStr = new String(decryptedResponse, StandardCharsets.UTF_8);
@@ -118,15 +106,15 @@ public class LoginController extends BaseController{
     }
 
 
-    @GetMapping(value = "/prod/authorizationCheck", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/" + HOST_NAME + "/authorizationCheck", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> authorizationCheck() {
 
-        logger.info("Method AuthorizationCheck.");
+        logger.info("Method AuthorizationCheck. {}", ConfigProperties.SERVER_HOST_NAME);
 
         String abc = "Проверка авторизации и шифрования";
         byte[] signedXml = tokenLib.SignData(dev.getCertificate(), dev.UsbSlot, pin, abc.getBytes(), true, avPath, err);
         byte[] crypt = BIT_PKCS11CL3.Encrypt(signedXml, KeyStore.sessionKeyProd, err);
-        Integer response = gateProd.sendXML(cDevice.armID, crypt, ExchData.AuthorizationCheck);
+        Integer response = gate.sendXML(cDevice.armID, crypt, ExchData.AuthorizationCheck);
 
         String result;
         switch (response){
@@ -148,11 +136,11 @@ public class LoginController extends BaseController{
     }
 
 
-    @GetMapping(value = "/prod/getLastError", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/" + HOST_NAME + "/getLastError", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> getLastError() {
 
         logger.info("getLastError.");
-        String result = gateProd.getLastError(cDevice.armID);
+        String result = gate.getLastError(cDevice.armID);
 
         return ResponseEntity.ok().body(result);
     }

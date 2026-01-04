@@ -1,6 +1,8 @@
 
 package org.tempuri;
 
+import ua.univer.config.ConfigProperties;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.xml.namespace.QName;
@@ -30,7 +32,7 @@ public class FBPGateService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://77.88.202.130:4000/FBPGate.IFBPGateService/?wsdl");
+            url = new URL(ConfigProperties.SERVER_URL);
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

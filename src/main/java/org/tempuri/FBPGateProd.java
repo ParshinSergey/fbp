@@ -1,5 +1,7 @@
 package org.tempuri;
 
+import ua.univer.config.ConfigProperties;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.xml.namespace.QName;
@@ -22,7 +24,7 @@ public class FBPGateProd extends Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://185.254.195.73:4001/FBPGate.IFBPGateService/");
+            url = new URL(ConfigProperties.SERVER_URL);
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

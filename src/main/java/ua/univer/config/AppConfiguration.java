@@ -6,6 +6,7 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.tempuri.FBPGateProd;
@@ -58,10 +59,11 @@ public class AppConfiguration {
 
 */
 
-    @Bean(name="gateProd")
-    public IFBPGateProd getGateProd() {
-        FBPGateProd service = new FBPGateProd();
-        IFBPGateProd gate = service.getWSHttpBindingFBPGate();
+    @Bean(name="gate")
+    //@ConditionalOnProperty(name = "fbp.server.hostName", havingValue = "prod")
+    public IFBPGateService getGate() {
+        FBPGateService service = new FBPGateService();
+        IFBPGateService gate = service.getWSHttpBindingFBPGate();
 
         Map<String, Object> requestContext = ((BindingProvider)gate).getRequestContext();
         requestContext.put(BindingProviderProperties.REQUEST_TIMEOUT, 9000); // Timeout in millis
@@ -88,10 +90,10 @@ public class AppConfiguration {
         ArrayList<cDevice> devices = tokenLib.GetDeviceList(true, avPath, err);
         cDevice dev = devices.get(0);
         ArrayList<Certificate> certificates = tokenLib.GetCertificateList(dev.UsbSlot, avPath, err);
-        dev.setCertificate(certificates.get(certificates.size() - 1));
+        Certificate cer = certificates.get(certificates.size() - 1);
+        dev.setCertificate(cer);
         cDevice.armID = dev.getCertificate().getSubjectName("OU");
 
-        Certificate cer = certificates.get(certificates.size() - 1);
         log.info("_____________________________________");
         log.info("Certificate Name " + cer.getSubjectName("OU"));
         log.info("EMail " + cer.getEMail());
@@ -101,8 +103,6 @@ public class AppConfiguration {
         log.info("NotBefore " + dd1.format(dateTimeFormatter));
         log.info("NotAfter " + dd2.format(dateTimeFormatter));
         log.info("_____________________________________");
-
-
 
         return dev;
     }
