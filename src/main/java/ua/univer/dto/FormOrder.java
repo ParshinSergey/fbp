@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 @Getter
@@ -68,6 +69,7 @@ public class FormOrder {
     private Boolean isFullPackage;
     private Boolean isEmitBackPay;
     private String agreements;
+    @Size(max = 30)
     private String contractNum;
     @NotNull
     private Boolean isCCP;
@@ -80,10 +82,13 @@ public class FormOrder {
     private String payAccountPaper2;
     private String clientEdrpou2;
     private Integer clientID2;
+    @Size(max = 30)
     private String contractNum2;
     private String agreements2;
     private String crossApplicationContext;
     private String tradeCurrency;
     private String applicationContextUnique;
     private String contractSum;
+    private Integer journalID;
+    private Integer journalID2;
 }

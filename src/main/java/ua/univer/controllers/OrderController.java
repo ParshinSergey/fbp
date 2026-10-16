@@ -141,4 +141,38 @@ public class OrderController extends BaseController{
     }
 
 
+
+    @PostMapping(value = "/" + HOST_NAME + "/newOrder")
+    public ResponseEntity<String> newOrder (@RequestBody @Valid FormOrder form){
+
+        logger.info("Method AddressOrder.");
+        DocumentElement document = new DocumentElement();
+        AddressOrder order = UtilForm.convertFormToAddressOrder(form);
+        document.addressOrder.add(order);
+
+        String xmlString = ConverterUtil.objectToXML(document);
+        writeStringToFile(xmlString, "AddressOrder", ".xml");
+
+        byte[] signedXml = tokenLib.SignData(dev.getCertificate(), dev.UsbSlot, pin, xmlString.getBytes(StandardCharsets.UTF_8), true, avPath, err);
+        byte[] crypt = BIT_PKCS11CL3.Encrypt(signedXml, KeyStore.sessionKeyProd, err);
+        byte[] response = gate.sendXMLResponse(cDevice.armID, crypt, ExchData.NewAddressOrder, false);
+        byte[] decryptedResponse = BIT_PKCS11CL3.Decrypt(response, KeyStore.sessionKeyProd, err);
+
+        if(decryptedResponse == null) throw new MyException("Response is null");
+        String responseStr = new String(decryptedResponse, StandardCharsets.UTF_8);
+        writeStringToFile( responseStr, "Response", ".xml");
+        DocumentElement de = ConverterUtil.xmlToObject(responseStr, DocumentElement.class);
+        if (de.getAddressOrder() == null) throw new MyException("Список AddressOrders пуст");
+        AddressOrder result = de.getAddressOrder().get(0);
+
+        if (result.getIsRejected() != null){
+            String message = result.getDiscription();
+            throw new DeclareException("Знехтувано Біржею: " + message);
+        }
+
+        return ResponseEntity.ok().body(ConverterUtil.objectToJson(result));
+    }
+
+
+
 }

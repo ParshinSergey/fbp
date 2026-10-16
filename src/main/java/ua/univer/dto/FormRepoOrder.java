@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 @Getter
@@ -43,6 +44,7 @@ public class FormRepoOrder {
     private String clientEDRISI;
     @NotBlank
     private String clientCode;
+    @Size(max = 30)
     private String contractNum;
     private String contractText;
     private String contractNumPart2;
@@ -84,9 +86,14 @@ public class FormRepoOrder {
     @NotBlank
     private String clientCode2;
     private Integer clientID2;
+    @Size(max = 30)
     private String contractNum2;
     private String contractText2;
     private String contractNum2Part2;
     private String contractText2Part2;
+    private Integer journalID;
+    private Integer journalID2;
+    private Integer journalIDPart2;
+    private Integer journalID2Part2;
 
 }

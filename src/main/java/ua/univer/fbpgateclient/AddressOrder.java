@@ -74,7 +74,9 @@ import java.math.BigDecimal;
         "crossApplicationContext",
         "tradeCurrency",
         "applicationContextUnique",
-        "contractSum"
+        "contractSum",
+        "journalID",
+        "journalID2"
 })
 public class AddressOrder {
 
@@ -212,5 +214,10 @@ public class AddressOrder {
     protected String applicationContextUnique;
     @XmlElement(name = "ContractSum")
     protected BigDecimal contractSum;
+
+    @XmlElement(name = "JournalID")
+    protected Integer journalID;
+    @XmlElement(name = "JournalID2")
+    protected Integer journalID2;
 
 }

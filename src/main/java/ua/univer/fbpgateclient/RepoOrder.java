@@ -63,7 +63,11 @@ import java.math.BigDecimal;
         "contractNum2",
         "contractText2",
         "contractNum2Part2",
-        "contractText2Part2"
+        "contractText2Part2",
+        "journalID",
+        "journalID2",
+        "journalIDPart2",
+        "journalID2Part2"
 })
 public class RepoOrder {
 
@@ -175,6 +179,15 @@ public class RepoOrder {
     protected String contractNum2Part2;
     @XmlElement(name = "ContractText2Part2")
     protected String contractText2Part2;
+
+    @XmlElement(name = "JournalID")
+    protected Integer journalID;
+    @XmlElement(name = "JournalID2")
+    protected Integer journalID2;
+    @XmlElement(name = "JournalIDPart2")
+    protected Integer journalIDPart2;
+    @XmlElement(name = "JournalID2Part2")
+    protected Integer journalID2Part2;
 
 
 }

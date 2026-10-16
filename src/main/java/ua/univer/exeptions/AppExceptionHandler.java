@@ -1,5 +1,6 @@
 package ua.univer.exeptions;
 
+import com.sun.xml.ws.client.ClientTransportException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +60,14 @@ public class AppExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(answer);
     }
 
+    @ExceptionHandler(ClientTransportException.class)
+    public ResponseEntity<String> handleClientTransportException(ClientTransportException ex) {
+        //String answer = String.format(TEXT_MISTAKE, ex.getMessage());
+        log.error("Внешний SOAP-сервис недоступен: ", ex);
+        return ResponseEntity
+                .status(HttpStatus.SERVICE_UNAVAILABLE) // HTTP 503
+                .body("Внешний сервис временно недоступен. Пожалуйста, попробуйте позже.");
+    }
 
 
 }
