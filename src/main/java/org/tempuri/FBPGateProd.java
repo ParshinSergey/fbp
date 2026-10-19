@@ -1,4 +1,4 @@
-package org.tempuri;
+/*package org.tempuri;
 
 import ua.univer.config.ConfigProperties;
 
@@ -56,23 +56,23 @@ public class FBPGateProd extends Service
         super(wsdlLocation, serviceName, features);
     }
 
-    /**
+    *//**
      *
      * @return
      *     returns IFBPGateService
-     */
+     *//*
     @WebEndpoint(name = "WSHttpBinding_FBPGate")
     public IFBPGateProd getWSHttpBindingFBPGate() {
         return super.getPort(new QName("http://tempuri.org/", "WSHttpBinding_FBPGate"), IFBPGateProd.class);
     }
 
-    /**
+    *//**
      *
      * @param features
      *     A list of {@link javax.xml.ws.WebServiceFeature} to configure on the proxy.  Supported features not in the <code>features</code> parameter will have their default values.
      * @return
      *     returns IFBPGateService
-     */
+     *//*
     @WebEndpoint(name = "WSHttpBinding_FBPGate")
     public IFBPGateProd getWSHttpBindingFBPGate(WebServiceFeature... features) {
         return super.getPort(new QName("http://tempuri.org/", "WSHttpBinding_FBPGate"), IFBPGateProd.class, features);
@@ -85,4 +85,4 @@ public class FBPGateProd extends Service
         return FBPGATESERVICE_WSDL_LOCATION;
     }
 
-}
+}*/

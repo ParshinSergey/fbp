@@ -9,9 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.tempuri.FBPGateProd;
 import org.tempuri.FBPGateService;
-import org.tempuri.IFBPGateProd;
 import org.tempuri.IFBPGateService;
 import ua.avtor.DsLib.Certificate;
 import ua.avtor.DsLib.CertificateException;
@@ -43,21 +41,6 @@ public class AppConfiguration {
 
     public final static String DIRECTORY = "INBOX_OUTBOX";
 
-/*
-
-    @Bean(name="gateTest")
-    public IFBPGateService getGateTest() {
-        FBPGateService service = new FBPGateService();
-        IFBPGateService gate = service.getWSHttpBindingFBPGate();
-
-        Map<String, Object> requestContext = ((BindingProvider)gate).getRequestContext();
-        requestContext.put(BindingProviderProperties.REQUEST_TIMEOUT, 9000); // Timeout in millis
-        requestContext.put(BindingProviderProperties.CONNECT_TIMEOUT, 2000); // Timeout in millis
-
-        return gate;
-    }
-
-*/
 
     @Bean(name="gate")
     //@ConditionalOnProperty(name = "fbp.server.hostName", havingValue = "prod")

@@ -1,3 +1,4 @@
+/*
 
 package org.tempuri;
 
@@ -24,23 +25,27 @@ import javax.xml.ws.ResponseWrapper;
 public interface IFBPGateProd {
 
 
-    /**
+    */
+/**
      *
      * @return
      *     returns byte[]
-     */
+     *//*
+
     @WebMethod(operationName = "GetServerCertificate", action = "http://tempuri.org/IFBPGateService/GetServerCertificate")
     @WebResult(name = "GetServerCertificateResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetServerCertificate", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetServerCertificate")
     @ResponseWrapper(localName = "GetServerCertificateResponse", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetServerCertificateResponse")
     public byte[] getServerCertificate();
 
-    /**
+    */
+/**
      *
      * @param strArmID
      * @return
      *     returns java.lang.String
-     */
+     *//*
+
     @WebMethod(operationName = "GetLastError", action = "http://tempuri.org/IFBPGateService/GetLastError")
     @WebResult(name = "GetLastErrorResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetLastError", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetLastError")
@@ -49,13 +54,15 @@ public interface IFBPGateProd {
             @WebParam(name = "strArmID", targetNamespace = "http://tempuri.org/")
             String strArmID);
 
-    /**
+    */
+/**
      *
      * @param rawSignData
      * @param strArmID
      * @return
      *     returns java.lang.String
-     */
+     *//*
+
     @WebMethod(operationName = "Login", action = "http://tempuri.org/IFBPGateService/Login")
     @WebResult(name = "LoginResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "Login", targetNamespace = "http://tempuri.org/", className = "com.tempuri.Login")
@@ -66,11 +73,13 @@ public interface IFBPGateProd {
             @WebParam(name = "rawSignData", targetNamespace = "http://tempuri.org/")
             byte[] rawSignData);
 
-    /**
+    */
+/**
      *
      * @param rawSignData
      * @param strArmID
-     */
+     *//*
+
     @WebMethod(operationName = "Logout", action = "http://tempuri.org/IFBPGateService/Logout")
     @Oneway
     @RequestWrapper(localName = "Logout", targetNamespace = "http://tempuri.org/", className = "com.tempuri.Logout")
@@ -80,46 +89,54 @@ public interface IFBPGateProd {
             @WebParam(name = "rawSignData", targetNamespace = "http://tempuri.org/")
             byte[] rawSignData);
 
-    /**
+    */
+/**
      *
      * @return
      *     returns java.lang.Long
-     */
+     *//*
+
     @WebMethod(operationName = "GetTradeStep", action = "http://tempuri.org/IFBPGateService/GetTradeStep")
     @WebResult(name = "GetTradeStepResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetTradeStep", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetTradeStep")
     @ResponseWrapper(localName = "GetTradeStepResponse", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetTradeStepResponse")
     public Long getTradeStep();
 
-    /**
+    */
+/**
      *
      * @return
      *     returns java.lang.Long
-     */
+     *//*
+
     @WebMethod(operationName = "GetOrdersChangeID", action = "http://tempuri.org/IFBPGateService/GetOrdersChangeID")
     @WebResult(name = "GetOrdersChangeIDResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetOrdersChangeID", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetOrdersChangeID")
     @ResponseWrapper(localName = "GetOrdersChangeIDResponse", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetOrdersChangeIDResponse")
     public Long getOrdersChangeID();
 
-    /**
+    */
+/**
      *
      * @return
      *     returns java.lang.Long
-     */
+     *//*
+
     @WebMethod(operationName = "GetLastJournalID", action = "http://tempuri.org/IFBPGateService/GetLastJournalID")
     @WebResult(name = "GetLastJournalIDResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetLastJournalID", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetLastJournalID")
     @ResponseWrapper(localName = "GetLastJournalIDResponse", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetLastJournalIDResponse")
     public Long getLastJournalID();
 
-    /**
+    */
+/**
      *
      * @param nData
      * @param withShema
      * @return
      *     returns java.lang.String
-     */
+     *//*
+
     @WebMethod(operationName = "GetXML", action = "http://tempuri.org/IFBPGateService/GetXML")
     @WebResult(name = "GetXMLResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetXML", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetXML")
@@ -130,14 +147,16 @@ public interface IFBPGateProd {
             @WebParam(name = "WithShema", targetNamespace = "http://tempuri.org/")
             Boolean withShema);
 
-    /**
+    */
+/**
      *
      * @param nData
      * @param withShema
      * @param strArmID
      * @return
      *     returns byte[]
-     */
+     *//*
+
     @WebMethod(operationName = "GetCryptXML", action = "http://tempuri.org/IFBPGateService/GetCryptXML")
     @WebResult(name = "GetCryptXMLResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetCryptXML", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetCryptXML")
@@ -150,7 +169,8 @@ public interface IFBPGateProd {
             @WebParam(name = "WithShema", targetNamespace = "http://tempuri.org/")
             Boolean withShema);
 
-    /**
+    */
+/**
      *
      * @param nLastID
      * @param nData
@@ -158,7 +178,8 @@ public interface IFBPGateProd {
      * @param strArmID
      * @return
      *     returns com.fbpgate.DataChangesType
-     */
+     *//*
+
     @WebMethod(operationName = "GetCryptXMLChanges", action = "http://tempuri.org/IFBPGateService/GetCryptXMLChanges")
     @WebResult(name = "GetCryptXMLChangesResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetCryptXMLChanges", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetCryptXMLChanges")
@@ -173,7 +194,8 @@ public interface IFBPGateProd {
             @WebParam(name = "WithShema", targetNamespace = "http://tempuri.org/")
             Boolean withShema);
 
-    /**
+    */
+/**
      *
      * @param nLastID
      * @param nData
@@ -182,7 +204,8 @@ public interface IFBPGateProd {
      * @param strArmID
      * @return
      *     returns com.fbpgate.DataChangesType
-     */
+     *//*
+
     @WebMethod(operationName = "GetCryptXMLChangesLimited", action = "http://tempuri.org/IFBPGateService/GetCryptXMLChangesLimited")
     @WebResult(name = "GetCryptXMLChangesLimitedResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetCryptXMLChangesLimited", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetCryptXMLChangesLimited")
@@ -199,7 +222,8 @@ public interface IFBPGateProd {
             @WebParam(name = "WithShema", targetNamespace = "http://tempuri.org/")
             Boolean withShema);
 
-    /**
+    */
+/**
      *
      * @param isCurrent
      * @param onDate
@@ -208,8 +232,10 @@ public interface IFBPGateProd {
      * @param strArmID
      * @return
      *     returns byte[]
-     */
-  /*  @WebMethod(operationName = "GetCryptXMLContracts", action = "http://tempuri.org/IFBPGateService/GetCryptXMLContracts")
+     *//*
+
+  */
+/*  @WebMethod(operationName = "GetCryptXMLContracts", action = "http://tempuri.org/IFBPGateService/GetCryptXMLContracts")
     @WebResult(name = "GetCryptXMLContractsResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetCryptXMLContracts", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetCryptXMLContracts")
     @ResponseWrapper(localName = "GetCryptXMLContractsResponse", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetCryptXMLContractsResponse")
@@ -223,9 +249,11 @@ public interface IFBPGateProd {
             @WebParam(name = "OnDate", targetNamespace = "http://tempuri.org/")
             XMLGregorianCalendar onDate,
             @WebParam(name = "IsCurrent", targetNamespace = "http://tempuri.org/")
-            Boolean isCurrent);*/
+            Boolean isCurrent);*//*
 
-    /**
+
+    */
+/**
      *
      * @param nData
      * @param withShema
@@ -233,7 +261,9 @@ public interface IFBPGateProd {
      * @param strArmID
      * @return
      *     returns byte[]
-     */
+     *//*
+
+*/
 /*    @WebMethod(operationName = "GetCryptXMLByJournalID", action = "http://tempuri.org/IFBPGateService/GetCryptXMLByJournalID")
     @WebResult(name = "GetCryptXMLByJournalIDResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetCryptXMLByJournalID", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetCryptXMLByJournalID")
@@ -246,16 +276,19 @@ public interface IFBPGateProd {
             @WebParam(name = "WithShema", targetNamespace = "http://tempuri.org/")
             Boolean withShema,
             @WebParam(name = "JournalID", targetNamespace = "http://tempuri.org/")
-            Long journalID);*/
+            Long journalID);*//*
 
-    /**
+
+    */
+/**
      *
      * @param signedData
      * @param nData
      * @param strArmID
      * @return
      *     returns java.lang.Integer
-     */
+     *//*
+
     @WebMethod(operationName = "SendXML", action = "http://tempuri.org/IFBPGateService/SendXML")
     @WebResult(name = "SendXMLResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "SendXML", targetNamespace = "http://tempuri.org/", className = "com.tempuri.SendXML")
@@ -268,13 +301,15 @@ public interface IFBPGateProd {
             @WebParam(name = "nData", targetNamespace = "http://tempuri.org/")
             Integer nData);
 
-    /**
+    */
+/**
      *
      * @param strArmID
      * @param xmlData
      * @return
      *     returns java.lang.Integer
-     */
+     *//*
+
     @WebMethod(operationName = "SendMassXML", action = "http://tempuri.org/IFBPGateService/SendMassXML")
     @WebResult(name = "SendMassXMLResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "SendMassXML", targetNamespace = "http://tempuri.org/", className = "com.tempuri.SendMassXML")
@@ -285,12 +320,14 @@ public interface IFBPGateProd {
             @WebParam(name = "XMLData", targetNamespace = "http://tempuri.org/")
             ArrayOfMassXMLDataType xmlData);
 
-    /**
+    */
+/**
      *
      * @param dataRequest
      * @return
      *     returns com.fbpgate.DataResponseType
-     */
+     *//*
+
     @WebMethod(operationName = "GetExhageData", action = "http://tempuri.org/IFBPGateService/GetExhageData")
     @WebResult(name = "GetExhageDataResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetExhageData", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetExhageData")
@@ -299,7 +336,8 @@ public interface IFBPGateProd {
             @WebParam(name = "dataRequest", targetNamespace = "http://tempuri.org/")
             DataRequestType dataRequest);
 
-    /**
+    */
+/**
      *
      * @param signedData
      * @param nData
@@ -307,7 +345,8 @@ public interface IFBPGateProd {
      * @param strArmID
      * @return
      *     returns byte[]
-     */
+     *//*
+
     @WebMethod(operationName = "SendXML_Response", action = "http://tempuri.org/IFBPGateService/SendXML_Response")
     @WebResult(name = "SendXML_ResponseResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "SendXML_Response", targetNamespace = "http://tempuri.org/", className = "com.tempuri.SendXMLResponse2")
@@ -322,7 +361,8 @@ public interface IFBPGateProd {
             @WebParam(name = "WithShemaResponse", targetNamespace = "http://tempuri.org/")
             Boolean withShemaResponse);
 
-    /**
+    */
+/**
      *
      * @param applicationContext
      * @param nData
@@ -330,7 +370,8 @@ public interface IFBPGateProd {
      * @param strArmID
      * @return
      *     returns byte[]
-     */
+     *//*
+
     @WebMethod(operationName = "GetCryptXMLContext", action = "http://tempuri.org/IFBPGateService/GetCryptXMLContext")
     @WebResult(name = "GetCryptXMLContextResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetCryptXMLContext", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetCryptXMLContext")
@@ -345,12 +386,14 @@ public interface IFBPGateProd {
             @WebParam(name = "WithShema", targetNamespace = "http://tempuri.org/")
             Boolean withShema);
 
-    /**
+    */
+/**
      *
      * @param strArmID
      * @return
      *     returns java.lang.Integer
-     */
+     *//*
+
     @WebMethod(operationName = "GetNewAddressOrderRequestInProcessCnt", action = "http://tempuri.org/IFBPGateService/GetNewAddressOrderRequestInProcessCnt")
     @WebResult(name = "GetNewAddressOrderRequestInProcessCntResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetNewAddressOrderRequestInProcessCnt", targetNamespace = "http://tempuri.org/", className = "com.tempuri.GetNewAddressOrderRequestInProcessCnt")
@@ -360,3 +403,4 @@ public interface IFBPGateProd {
             String strArmID);
 
 }
+*/

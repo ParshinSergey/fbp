@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="FBPGateService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+	<wsp:Policy wsu:Id="WSHttpBinding_FBPGate_policy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<wsaw:UsingAddressing/>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://tempuri.org/Imports">
+			<xsd:import schemaLocation="http://185.254.195.75:4000/FBPGate.IFBPGateService/?xsd=xsd0" namespace="http://tempuri.org/"/>
+			<xsd:import schemaLocation="http://185.254.195.75:4000/FBPGate.IFBPGateService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			<xsd:import schemaLocation="http://185.254.195.75:4000/FBPGate.IFBPGateService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/FBPGate"/>
+			<xsd:import schemaLocation="http://185.254.195.75:4000/FBPGate.IFBPGateService/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="IFBPGateService_GetServerCertificate_InputMessage">
+		<wsdl:part name="parameters" element="tns:GetServerCertificate"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetServerCertificate_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GetServerCertificateResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetLastError_InputMessage">
+		<wsdl:part name="parameters" element="tns:GetLastError"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetLastError_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GetLastErrorResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_Login_InputMessage">
+		<wsdl:part name="parameters" element="tns:Login"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_Login_OutputMessage">
+		<wsdl:part name="parameters" element="tns:LoginResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_Logout_InputMessage">
+		<wsdl:part name="parameters" element="tns:Logout"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetTradeStep_InputMessage">
+		<wsdl:part name="parameters" element="tns:GetTradeStep"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetTradeStep_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GetTradeStepResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetOrdersChangeID_InputMessage">
+		<wsdl:part name="parameters" element="tns:GetOrdersChangeID"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetOrdersChangeID_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GetOrdersChangeIDResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetLastJournalID_InputMessage">
+		<wsdl:part name="parameters" element="tns:GetLastJournalID"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetLastJournalID_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GetLastJournalIDResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetXML_InputMessage">
+		<wsdl:part name="parameters" element="tns:GetXML"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetXML_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GetXMLResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetCryptXML_InputMessage">
+		<wsdl:part name="parameters" element="tns:GetCryptXML"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetCryptXML_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GetCryptXMLResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetCryptXMLChanges_InputMessage">
+		<wsdl:part name="parameters" element="tns:GetCryptXMLChanges"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetCryptXMLChanges_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GetCryptXMLChangesResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetCryptXMLChangesLimited_InputMessage">
+		<wsdl:part name="parameters" element="tns:GetCryptXMLChangesLimited"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetCryptXMLChangesLimited_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GetCryptXMLChangesLimitedResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetCryptXMLContracts_InputMessage">
+		<wsdl:part name="parameters" element="tns:GetCryptXMLContracts"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetCryptXMLContracts_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GetCryptXMLContractsResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetCryptXMLByJournalID_InputMessage">
+		<wsdl:part name="parameters" element="tns:GetCryptXMLByJournalID"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetCryptXMLByJournalID_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GetCryptXMLByJournalIDResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_SendXML_InputMessage">
+		<wsdl:part name="parameters" element="tns:SendXML"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_SendXML_OutputMessage">
+		<wsdl:part name="parameters" element="tns:SendXMLResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_SendMassXML_InputMessage">
+		<wsdl:part name="parameters" element="tns:SendMassXML"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_SendMassXML_OutputMessage">
+		<wsdl:part name="parameters" element="tns:SendMassXMLResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetExhageData_InputMessage">
+		<wsdl:part name="parameters" element="tns:GetExhageData"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetExhageData_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GetExhageDataResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_SendXML_Response_InputMessage">
+		<wsdl:part name="parameters" element="tns:SendXML_Response"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_SendXML_Response_OutputMessage">
+		<wsdl:part name="parameters" element="tns:SendXML_ResponseResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetCryptXMLContext_InputMessage">
+		<wsdl:part name="parameters" element="tns:GetCryptXMLContext"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetCryptXMLContext_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GetCryptXMLContextResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetNewAddressOrderRequestInProcessCnt_InputMessage">
+		<wsdl:part name="parameters" element="tns:GetNewAddressOrderRequestInProcessCnt"/>
+	</wsdl:message>
+	<wsdl:message name="IFBPGateService_GetNewAddressOrderRequestInProcessCnt_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GetNewAddressOrderRequestInProcessCntResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="IFBPGateService">
+		<wsdl:operation name="GetServerCertificate">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/GetServerCertificate" message="tns:IFBPGateService_GetServerCertificate_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/GetServerCertificateResponse" message="tns:IFBPGateService_GetServerCertificate_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetLastError">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/GetLastError" message="tns:IFBPGateService_GetLastError_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/GetLastErrorResponse" message="tns:IFBPGateService_GetLastError_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="Login">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/Login" message="tns:IFBPGateService_Login_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/LoginResponse" message="tns:IFBPGateService_Login_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="Logout">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/Logout" message="tns:IFBPGateService_Logout_InputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetTradeStep">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/GetTradeStep" message="tns:IFBPGateService_GetTradeStep_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/GetTradeStepResponse" message="tns:IFBPGateService_GetTradeStep_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetOrdersChangeID">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/GetOrdersChangeID" message="tns:IFBPGateService_GetOrdersChangeID_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/GetOrdersChangeIDResponse" message="tns:IFBPGateService_GetOrdersChangeID_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetLastJournalID">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/GetLastJournalID" message="tns:IFBPGateService_GetLastJournalID_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/GetLastJournalIDResponse" message="tns:IFBPGateService_GetLastJournalID_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetXML">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/GetXML" message="tns:IFBPGateService_GetXML_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/GetXMLResponse" message="tns:IFBPGateService_GetXML_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetCryptXML">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/GetCryptXML" message="tns:IFBPGateService_GetCryptXML_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/GetCryptXMLResponse" message="tns:IFBPGateService_GetCryptXML_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetCryptXMLChanges">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/GetCryptXMLChanges" message="tns:IFBPGateService_GetCryptXMLChanges_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/GetCryptXMLChangesResponse" message="tns:IFBPGateService_GetCryptXMLChanges_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetCryptXMLChangesLimited">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/GetCryptXMLChangesLimited" message="tns:IFBPGateService_GetCryptXMLChangesLimited_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/GetCryptXMLChangesLimitedResponse" message="tns:IFBPGateService_GetCryptXMLChangesLimited_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetCryptXMLContracts">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/GetCryptXMLContracts" message="tns:IFBPGateService_GetCryptXMLContracts_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/GetCryptXMLContractsResponse" message="tns:IFBPGateService_GetCryptXMLContracts_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetCryptXMLByJournalID">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/GetCryptXMLByJournalID" message="tns:IFBPGateService_GetCryptXMLByJournalID_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/GetCryptXMLByJournalIDResponse" message="tns:IFBPGateService_GetCryptXMLByJournalID_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="SendXML">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/SendXML" message="tns:IFBPGateService_SendXML_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/SendXMLResponse" message="tns:IFBPGateService_SendXML_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="SendMassXML">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/SendMassXML" message="tns:IFBPGateService_SendMassXML_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/SendMassXMLResponse" message="tns:IFBPGateService_SendMassXML_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetExhageData">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/GetExhageData" message="tns:IFBPGateService_GetExhageData_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/GetExhageDataResponse" message="tns:IFBPGateService_GetExhageData_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="SendXML_Response">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/SendXML_Response" message="tns:IFBPGateService_SendXML_Response_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/SendXML_ResponseResponse" message="tns:IFBPGateService_SendXML_Response_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetCryptXMLContext">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/GetCryptXMLContext" message="tns:IFBPGateService_GetCryptXMLContext_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/GetCryptXMLContextResponse" message="tns:IFBPGateService_GetCryptXMLContext_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetNewAddressOrderRequestInProcessCnt">
+			<wsdl:input wsaw:Action="http://tempuri.org/IFBPGateService/GetNewAddressOrderRequestInProcessCnt" message="tns:IFBPGateService_GetNewAddressOrderRequestInProcessCnt_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IFBPGateService/GetNewAddressOrderRequestInProcessCntResponse" message="tns:IFBPGateService_GetNewAddressOrderRequestInProcessCnt_OutputMessage"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="WSHttpBinding_FBPGate" type="tns:IFBPGateService">
+		<wsp:PolicyReference URI="#WSHttpBinding_FBPGate_policy"/>
+		<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="GetServerCertificate">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/GetServerCertificate" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetLastError">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/GetLastError" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="Login">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/Login" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="Logout">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/Logout" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+		</wsdl:operation>
+		<wsdl:operation name="GetTradeStep">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/GetTradeStep" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetOrdersChangeID">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/GetOrdersChangeID" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetLastJournalID">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/GetLastJournalID" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetXML">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/GetXML" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetCryptXML">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/GetCryptXML" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetCryptXMLChanges">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/GetCryptXMLChanges" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetCryptXMLChangesLimited">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/GetCryptXMLChangesLimited" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetCryptXMLContracts">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/GetCryptXMLContracts" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetCryptXMLByJournalID">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/GetCryptXMLByJournalID" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SendXML">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/SendXML" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SendMassXML">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/SendMassXML" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetExhageData">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/GetExhageData" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SendXML_Response">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/SendXML_Response" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetCryptXMLContext">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/GetCryptXMLContext" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetNewAddressOrderRequestInProcessCnt">
+			<soap12:operation soapAction="http://tempuri.org/IFBPGateService/GetNewAddressOrderRequestInProcessCnt" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="FBPGateService">
+		<wsdl:port name="WSHttpBinding_FBPGate" binding="tns:WSHttpBinding_FBPGate">
+			<soap12:address location="http://185.254.195.75:4000/FBPGate.IFBPGateService/"/>
+			<wsa10:EndpointReference>
+				<wsa10:Address>http://185.254.195.75:4000/FBPGate.IFBPGateService/</wsa10:Address>
+			</wsa10:EndpointReference>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

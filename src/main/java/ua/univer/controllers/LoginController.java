@@ -27,56 +27,31 @@ import java.util.concurrent.TimeUnit;
 import static ua.univer.util.FileUtil.writeStringToFile;
 
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/api/${host_name}")
 public class LoginController extends BaseController{
-
-    final static String HOST_NAME = "${host_name}";
-
 
     public LoginController(HttpClient httpClient, IFBPGateService gate, CertGenerator genRSA, cDevice dev, KeyStore keyStore) {
         super(httpClient, gate, genRSA, dev, keyStore);
     }
-/*
-
-
-    @Scheduled(fixedRate = 365*24*60*60, initialDelay = 5, timeUnit = TimeUnit.SECONDS)
-    @Scheduled(cron="2 0 10 * * MON-FRI")
-    @GetMapping(value = "/v1/login", produces = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<String> login() {
-
-        logger.info("Method Login. TEST.");
-
-        String strLoginData = loginXML(cDevice.armID, Base64.getEncoder().encodeToString(dev.getCertificate().getEncoded()),
-                "1", "1", Base64.getEncoder().encodeToString(CertGenerator.RSACert));
-
-        // Подпись данных для входа
-        byte[] signedLogin = tokenLib.SignData(dev.getCertificate(), dev.UsbSlot, pin, strLoginData.getBytes(), true, avPath, err);
-
-        String responseStr = gateTest.login(cDevice.armID, signedLogin);
-        writeStringToFile(responseStr, "Response", ".xml");
-        LoginData loginData = ConverterUtil.xmlToObject(responseStr, LoginData.class);
-        if (loginData.login == null || loginData.login.isEmpty() || loginData.login.get(0).IsLoginOk == null || !loginData.login.get(0).IsLoginOk.equalsIgnoreCase("True")) {
-            throw new MyException("Вход не выполнен !!");
-        }
-        // Генерируем ключ симметричного шифрования ДСТУ
-        KeyStore.sessionKey = genRSA.GenerateSessionKeyB(Base64.getDecoder().decode(loginData.login.get(0).Base64Token));
-
-        return ResponseEntity.ok().body(responseStr);
-    }
-
-*/
 
 
     @Scheduled(fixedRate = 365*24*60*60, initialDelay = 5, timeUnit = TimeUnit.SECONDS)
     @Scheduled(cron="0 0 10 * * MON-FRI")
-    @GetMapping(value = "/"  + HOST_NAME + "/login", produces = MediaType.APPLICATION_XML_VALUE)
+    @GetMapping(value = "/login", produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<String> login() {
 
         logger.info("Method Login. {}", ConfigProperties.SERVER_HOST_NAME);
 
-        String strLoginData = loginXML(cDevice.armID, Base64.getEncoder().encodeToString(dev.getCertificate().getEncoded()),
-                KeyStore.login, KeyStore.password, Base64.getEncoder().encodeToString(CertGenerator.RSACert));
-
+        String strLoginData;
+        if ("prod".equalsIgnoreCase(ConfigProperties.SERVER_HOST_NAME)) {
+            strLoginData = loginXML(cDevice.armID, Base64.getEncoder().encodeToString(dev.getCertificate().getEncoded()),
+                    KeyStore.login, KeyStore.password, Base64.getEncoder().encodeToString(CertGenerator.RSACert));
+        }
+        else {
+            strLoginData = loginXML(cDevice.armID, Base64.getEncoder().encodeToString(dev.getCertificate().getEncoded()),
+                    "1", "1", Base64.getEncoder().encodeToString(CertGenerator.RSACert));
+        }
+        // Подпись данных для входа
         byte[] signedLogin = tokenLib.SignData(dev.getCertificate(), dev.UsbSlot, pin, strLoginData.getBytes(), true, avPath, err);
 
         String responseStr = gate.login(cDevice.armID, signedLogin);
@@ -85,13 +60,14 @@ public class LoginController extends BaseController{
         if (loginData.login == null || loginData.login.isEmpty() || loginData.login.get(0).IsLoginOk == null || !loginData.login.get(0).IsLoginOk.equalsIgnoreCase("True")) {
             throw new MyException("Вход не выполнен !!");
         }
+        // Генерируем ключ симметричного шифрования ДСТУ
         KeyStore.sessionKeyProd = genRSA.GenerateSessionKeyB(Base64.getDecoder().decode(loginData.login.get(0).Base64Token));
 
         return ResponseEntity.ok().body(responseStr);
     }
 
 
-    @GetMapping(value = "/" + HOST_NAME + "/getPortfolio", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/getPortfolio", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> getPortfolio() {
 
         logger.info("Method GetPortfolio. {}", ConfigProperties.SERVER_HOST_NAME);
@@ -106,7 +82,7 @@ public class LoginController extends BaseController{
     }
 
 
-    @GetMapping(value = "/" + HOST_NAME + "/authorizationCheck", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/authorizationCheck", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> authorizationCheck() {
 
         logger.info("Method AuthorizationCheck. {}", ConfigProperties.SERVER_HOST_NAME);
@@ -136,7 +112,7 @@ public class LoginController extends BaseController{
     }
 
 
-    @GetMapping(value = "/" + HOST_NAME + "/getLastError", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/getLastError", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> getLastError() {
 
         logger.info("getLastError.");
